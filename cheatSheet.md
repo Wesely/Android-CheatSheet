@@ -1,5 +1,14 @@
 # Package
 
+## ANKO
+
+- `asReference()`, 
+- https://github.com/kotlin/anko
+
+``` gradle
+    implementation "org.jetbrains.anko:anko:0.10.8"
+```
+
 ## Glide
 
 ``` gradle
@@ -118,6 +127,11 @@
             pager.parent.requestDisallowInterceptTouchEvent(true)
         }
     ```
+
+- Scrolling conflict
+
+  - Override `dispatchTouchEvent()`
+  - override `onInterceptTouchEvent()`
 
 - Run On UI Thread
 

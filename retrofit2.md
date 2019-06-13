@@ -34,11 +34,11 @@ class RetrofitHelper {
     interface WeatherService {
         @Headers(
             "X-RapidAPI-Host: community-open-weather-map.p.rapidapi.com",
-            "X-RapidAPI-Key: d6255f9176mshdfcc7ee37b7760ap12709ejsn003e1c00280d"
+            "X-RapidAPI-Key: d6255f91003e1c00280d"
         )
-        @GET("current.json?key=7d32e229aac845cdab135825192405&q=Linkou,tw&lang=zh_tw")
+        @GET("current.json?key=7d32e2205&q=Linkou,tw&lang=zh_tw")
         fun getWeather(): Call<ResponseBody>
-        @GET("current.json?key=7d32e229aac845cdab135825192405&lang=zh_tw")
+        @GET("current.json?key=7d32e22405&lang=zh_tw")
         fun getWeather(@Query("q") q: String): Observable<Weather> // Query annotation needs not ?name=query format
     }
 }
