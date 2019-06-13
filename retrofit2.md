@@ -18,16 +18,20 @@
 class RetrofitHelper {
     companion object {
         // Callback Version
-        var retrofit = Retrofit.Builder()
+        var retrofit = lazy{
+            Retrofit.Builder()
             .baseUrl("https://api.apixu.com/v1/")
             .build()
+        }
 
         // RxObservser Version
-        var rxRetrofit = Retrofit.Builder()
+        var rxRetrofit = lazy{
+            Retrofit.Builder()
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .addConverterFactory(GsonConverterFactory.create()) // use Gson
             .baseUrl("https://api.apixu.com/v1/")
             .build()
+        }
 
     }
 

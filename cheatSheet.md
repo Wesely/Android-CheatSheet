@@ -141,41 +141,7 @@
     }
     ```
 
-## Rx
-
-RxClass Example
-
-- Subscribtion :
-  - compositeDisposable.add
-  - LifeCycle(observable.`.compose()`)
-
-- PublishSubject Pattern :
-
-    ```Kotlin
-        val source = PublishSubject.create<Int>()
-        val ob = source.subscribe(...)
-        for(i in 1..20)
-            source.onNext(i)
-        source.onComplete()
-    ```
-
-- Observable Pattern :
-
-    ``` gradle
-    val ob = Observable.just(100,200,300)
-        val disposable = ob.map { "I got $it" }
-            .compose(bindToLifecycle()).subscribeOn(Schedulers.io())
-            .doOnDispose { Log.d("rxTest", "doOnDispose") }
-            .doOnComplete { Log.d("rxTest", "doOnComplete"); }
-            .doOnEach { Log.d("rxTest", "doOnEach") }
-            .subscribe(
-                { Log.d("rxTest", "onNext : $it") },
-                { Log.d("rxTest", "onError") }
-            )
-    ```
-
-
-# Data Binding
+## Data Binding
 
 - Basic in Activity
 
