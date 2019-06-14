@@ -67,6 +67,27 @@
      implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha04'
 ```
 
+## Room
+
+``` gradle
+    def room_version = "2.1.0-rc01"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"
+
+    // optional - RxJava support for Room
+    implementation "androidx.room:room-rxjava2:$room_version"
+
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation "androidx.room:room-guava:$room_version"
+
+    // Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
+```
+
 ## UI
 
 ### Fonts
@@ -165,3 +186,13 @@
     // or
     val listItemBinding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item, viewGroup, false)
     ```
+
+## Kotlin Things
+
+### Class delegation: using the `by` keyword
+
+``` Kotlin
+class DelegatingCollection<T>(
+        innerList: Collection<T> = ArrayList<T>()
+) : Collection<T> by innerList {}
+```
