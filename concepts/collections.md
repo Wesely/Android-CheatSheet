@@ -8,3 +8,4 @@
 - SortDesending
 - joinToString()
   - `people.joinToString(" ") { p: Person -> p.name }`
+- `forEach{}`
