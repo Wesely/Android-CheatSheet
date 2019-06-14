@@ -1,5 +1,14 @@
 # Package
 
+## At the Top of Gradle
+
+``` gradle
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt' // for annotation
+```
+
 ## ANKO
 
 - `asReference()`, 
@@ -69,23 +78,36 @@
 
 ## Room
 
-``` gradle
-    def room_version = "2.1.0-rc01"
+1. Put `apply plugin: 'kotlin-kapt'` at the top of `app.gradle`
 
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
+2. Add dependencies:
 
-    // optional - Kotlin Extensions and Coroutines support for Room
-    implementation "androidx.room:room-ktx:$room_version"
+    ``` gradle
+        def room_version = "2.1.0-rc01"
 
-    // optional - RxJava support for Room
-    implementation "androidx.room:room-rxjava2:$room_version"
+        implementation "androidx.room:room-runtime:$room_version"
+        annotationProcessor "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
 
-    // optional - Guava support for Room, including Optional and ListenableFuture
-    implementation "androidx.room:room-guava:$room_version"
+        // optional - Kotlin Extensions and Coroutines support for Room
+        implementation "androidx.room:room-ktx:$room_version"
 
-    // Test helpers
-    testImplementation "androidx.room:room-testing:$room_version"
+        // optional - RxJava support for Room
+        implementation "androidx.room:room-rxjava2:$room_version"
+
+        // optional - Guava support for Room, including Optional and ListenableFuture
+        implementation "androidx.room:room-guava:$room_version"
+
+        // Test helpers
+        testImplementation "androidx.room:room-testing:$room_version"
+    ```
+
+# Coroutine with Kotlin
+
+```kotlin
+dependencies {
+    ...
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1"
+}
 ```
 
 ## UI
