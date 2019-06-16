@@ -7,3 +7,58 @@
 - You can pass lambdas as arguments to methods that take a Java functional interface (an interface with a single abstract method, also known as a SAM interface) as a parameter.
 - Lambdas with receivers are lambdas in which you can directly call methods on a special receiver object.
 - The with standard library function allows you to call multiple methods on the same object without repeating the reference to the object. apply lets you construct and initialize any object using a builder-style API.
+
+
+### With
+
+```kt
+fun alphabet() = with(StringBuilder()) {
+    for (letter in 'A'..'Z') {
+        append(letter)
+    }
+    append("\nNow I know the alphabet!")
+    toString()
+}
+```
+
+### Apply
+
+```kt
+fun alphabet() = StringBuilder().apply {
+    for (letter in 'A'..'Z') {
+        append(letter)
+    }
+    append("\nNow I know the alphabet!")
+}.toString()
+```
+
+```kt
+  TextView(context).apply {
+      text = "Sample Text"
+      textSize = 20.0
+      setPadding(10, 0, 0, 0)
+  }
+```
+
+
+## Sequence : 
+
+Sequences give you an alternative way to perform such computations that avoids the creation of intermediate temporary objects.
+
+```kt
+//A
+people.map(Person::name).filter { it.startsWith("A") }
+//B
+people.asSequence()                 
+    .map(Person::name)                   
+    .filter { it.startsWith("A") }     
+    .toList()
+```
+ B has no intermediate collections to store the elements are created, so performance for a large number of elements will be noticeably better.
+ 
+### Generate and use Sequence
+ 
+```kt
+val naturalNumbers = generateSequence(0) { it + 1 }
+val numbersTo100 = naturalNumbers.takeWhile { it <= 100 }
+```
