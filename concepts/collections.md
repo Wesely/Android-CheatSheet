@@ -14,7 +14,39 @@
   - `people.groupBy { it.age }`
 - flatMap
 - assequences
+
 ____
+
+### With
+
+```kt
+fun alphabet() = with(StringBuilder()) {
+    for (letter in 'A'..'Z') {
+        append(letter)
+    }
+    append("\nNow I know the alphabet!")
+    toString()
+}
+```
+
+### Apply
+
+```kt
+fun alphabet() = StringBuilder().apply {
+    for (letter in 'A'..'Z') {
+        append(letter)
+    }
+    append("\nNow I know the alphabet!")
+}.toString()
+```
+
+```kt
+  TextView(context).apply {
+      text = "Sample Text"
+      textSize = 20.0
+      setPadding(10, 0, 0, 0)
+  }
+```
 
 ## Applying a predicate to a collection
 
