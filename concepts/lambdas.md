@@ -40,6 +40,14 @@ fun alphabet() = StringBuilder().apply {
   }
 ```
 
+### Let
+
+```kt
+email?.let { email -> sendEmailTo(email) }
+user?.let { sendEmailTo(it.email) }
+```
+
+The let function will be called only if the email value is non-null, so you use the email as a non-null argument of the lambda
 
 ## Sequence : 
 
