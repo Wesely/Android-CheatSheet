@@ -218,3 +218,14 @@ class DelegatingCollection<T>(
         innerList: Collection<T> = ArrayList<T>()
 ) : Collection<T> by innerList {}
 ```
+
+### coerceIn()
+
+```kt
+fun showProgress(progress: Int) {
+    val percent = progress.coerceIn(0, 100)
+    println("We're ${percent}% done!")
+}
+// result : >>> showProgress(146)
+// We're 100% done!
+```
