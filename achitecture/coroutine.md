@@ -1,4 +1,4 @@
-# Coroutine with Kotlin
+# `Coroutine` with Kotlin
 
 - <https://kotlinlang.org/docs/tutorials/coroutines/coroutines-basic-jvm.html>
 
@@ -21,18 +21,19 @@ launch {
 }
 
 // non-blocking
+// it's parent might return(end) while non-blocking is still in process
 GlobalScope.launch {
     delay(1000)
     println("Hello")
 }
 
-// blocking
-runBlocking {
+// blocking, this will make his parent function wait for it's result
+runBlocking { 
     delay(2000)
 }
 ```
 
-### Async : returning value from coroutine
+### Async : returning value from `coroutine`
 
 ```kt
 val c = AtomicLong()
@@ -47,7 +48,9 @@ println(c.get())
 
 This is better and faster than creating 1,000,000 threads.
 
-But needs to tell mainThread to wait for coroutine to complete,
+But needs to tell mainThread to wait for `coroutine` to complete, so we need `await()`
+
+## `await()` function
 
 ```kt
 // This function returns many `n`
@@ -90,5 +93,15 @@ Correct way:
 suspend fun workload(n: Int): Int {
     delay(1000)
     return n
+}
+```
+
+## Back to MainThread
+
+```kt
+GlobalScope.launch {
+    withContext(Dispatchers.Main) {
+        Log.d("coroutineScope", "#runs on ${Thread.currentThread().name}")
+    }
 }
 ```
