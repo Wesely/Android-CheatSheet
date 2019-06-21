@@ -17,7 +17,6 @@
 
 ____
 
-
 ## Applying a predicate to a collection
 
 ```kt

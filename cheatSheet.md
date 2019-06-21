@@ -114,6 +114,10 @@ dependencies {
 
 ### Fonts
 
+- AutoSize
+
+    `android:autoSizeTextType="uniform"`
+
 - Light
 
     `android:fontFamily="sans-serif-light"`

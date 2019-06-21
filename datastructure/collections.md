@@ -17,3 +17,8 @@
 ### Vector
 
 - `Vector` is similar with `ArrayList`, but it is `synchronized`
+
+### HashMap vs HasTable
+
+- `HashTable` is sync while `HashMap` is async
+- `HashTable` comes from `Dictionary`, `HashMap` from `AbstractMap` from `Map`
