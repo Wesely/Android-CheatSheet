@@ -68,7 +68,7 @@ class RetrofitHelper {
 ``` Kotlin
 val webService = RetrofitHelper.retrofit.create(RetrofitHelper.WeatherService::class.java)
 val call = webService.getWeather()
-call.enqueue(object : Callback<ResponseBody> {
+call.enqueue(object : Call<ResponseBody> {
     override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
         // TODO!!
     }
