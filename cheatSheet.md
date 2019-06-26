@@ -7,11 +7,21 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt' // for annotation
+
+// MUST
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+```
+
+## Material Design
+
+```kt
+    // Material Design
+    implementation 'com.google.android.material:material:1.1.0-alpha07'
 ```
 
 ## ANKO
 
-- `asReference()`, 
+- `asReference()`
 - https://github.com/kotlin/anko
 
 ``` gradle

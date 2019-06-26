@@ -105,3 +105,19 @@ GlobalScope.launch {
     }
 }
 ```
+
+```kt
+GlobalScope.launch {
+    suspend {
+        // This runs on another thread
+        delay(10000)
+        withContext(Dispatchers.Main){
+            // This runs on Main Thread
+        }
+        withContext(Handler(Looper.getMainLooper()).asCoroutineDispatcher()) {
+            // This ALSO runs on Main Thread
+            // If Dispatchers.Main makes a bug, use this insdead
+        }
+    }.invoke()
+}
+```
