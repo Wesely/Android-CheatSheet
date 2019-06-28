@@ -34,6 +34,11 @@ apply plugin: 'kotlin-kapt' // for annotation
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     implementation 'com.github.bumptech.glide:compiler:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    implementation ("com.github.bumptech.glide:recyclerview-integration:4.9.0") {
+        // Excludes the support library because it's already included by Glide.
+        transitive = false
+    }
 ```
 
 ## ReactiveX
@@ -157,6 +162,19 @@ dependencies {
     pb.start()
     ```
 
+### Fading Edge
+
+Fade `RecyclerView` and `ScrollView`
+
+```kt
+    <ScrollView
+        ...
+        android:requiresFadingEdge="vertical"
+        android:fadeScrollbars="true"
+        android:fadingEdge="vertical"
+        android:fadingEdgeLength="20dp">
+```
+
 ### Layout Positioning
 
 - Set DrawableLeft
@@ -234,6 +252,8 @@ class DelegatingCollection<T>(
 ```
 
 ### coerceIn()
+
+Specify a maximum value / boundary that makes the value be limited inside the range.
 
 ```kt
 fun showProgress(progress: Int) {
