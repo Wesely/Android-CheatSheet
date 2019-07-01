@@ -61,3 +61,28 @@ class MyAdapter(val context: Context,val data:List<Any>) : RecyclerView.Adapter<
     }
 }
 ```
+
+## OnItemClickedListener()
+
+1. Create a Interface
+
+    ```kt
+    interface ItemClickListener {
+        fun onItemClick(view: View, int: Int)
+    }
+    ```
+
+2. Implement the Interface in the `Activity`/`Fragment`
+
+3. Passing events through the interface
+
+    ```kt
+    override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
+        // ...
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.onItemClick(holder.itemView, position)
+        }
+    }
+    ```
+
+4. `adapter?.onItemClickListener = this`

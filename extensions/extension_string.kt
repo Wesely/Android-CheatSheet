@@ -3,9 +3,14 @@ fun String?.isNullOrBlank(): Boolean =
         this == null || this.isBlank()
 
 /** Get a View's position on the screen */
-fun View.getLocationOnScreen(): Point
+fun View.getAxisOnScreen(): Point
 {
     val location = IntArray(2).apply(::getLocationOnScreen)
+    return Point(location[0],location[1])
+}
+fun View.getAxisInWindow(): Point
+{
+    val location = IntArray(2).apply(::getLocationInWindow)
     return Point(location[0],location[1])
 }
 

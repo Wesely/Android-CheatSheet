@@ -208,12 +208,28 @@ Fade `RecyclerView` and `ScrollView`
   - Override `dispatchTouchEvent()`
   - override `onInterceptTouchEvent()`
 
+- Observe UI Complete `myView.viewTreeObserver.addOnGlobalLayoutListener {}`
+
 - Run On UI Thread
 
     ``` Kotlin
     Handler(Looper.getMainLooper()).post {
         // codes here
     }
+    ```
+
+- Handler()
+
+    ```kt
+        val handler = Handler()
+        handler.post(object :Runnable{
+            override fun run() {
+                root.cvDetail.translationY += 10
+                if (root.basicLine.getLocationOnScreen().y < screenH){
+                    root.postDelayed(this, 20)
+                }
+            }
+        })
     ```
 
 ## Data Binding
