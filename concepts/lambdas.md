@@ -49,7 +49,7 @@ user?.let { sendEmailTo(it.email) }
 
 The let function will be called only if the email value is non-null, so you use the email as a non-null argument of the lambda
 
-## Sequence : 
+## Sequence
 
 Sequences give you an alternative way to perform such computations that avoids the creation of intermediate temporary objects.
 
@@ -57,15 +57,16 @@ Sequences give you an alternative way to perform such computations that avoids t
 //A
 people.map(Person::name).filter { it.startsWith("A") }
 //B
-people.asSequence()                 
-    .map(Person::name)                   
-    .filter { it.startsWith("A") }     
+people.asSequence()
+    .map(Person::name)
+    .filter { it.startsWith("A") }
     .toList()
 ```
+
  B has no intermediate collections to store the elements are created, so performance for a large number of elements will be noticeably better.
- 
+
 ### Generate and use Sequence
- 
+
 ```kt
 val naturalNumbers = generateSequence(0) { it + 1 }
 val numbersTo100 = naturalNumbers.takeWhile { it <= 100 }
