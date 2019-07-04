@@ -31,4 +31,3 @@ val canBeInClub27 = { p: Person -> p.age <= 27 }
   - `people.count(canBeInClub27)`
   - More efficient than `people.filter(canBeInClub27).size` because needs not to create a intermediate collection.
 - find()
-
