@@ -1,12 +1,22 @@
 # RecyclerView
 
+If `OnClickEvents` will modify the Views, Change the View inside VH itself instead of using `nodifyData...Changed()` because that will make some blinks.
+
 ## RecyclerView Itself
 
 ```Kotlin
 recyclerView.layoutManager = LinearLayoutManager(this)
+recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 recyclerView.layoutManager = GridLayoutManager(this, 2)
 recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 recyclerView.adapter = adapter
+```
+
+## SnapHelper
+
+```kt
+    val snapHelper = LinearSnapHelper()
+    snapHelper.attachToRecyclerView(recyclerView)
 ```
 
 ## Adapter with ViewHolder

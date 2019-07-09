@@ -14,6 +14,11 @@ fun View.getAxisInWindow(): Point
     return Point(location[0],location[1])
 }
 
+/** Change the tint for ImageView */
+fun ImageView.setTint(colorId:Int){
+    DrawableCompat.setTint(drawable, ContextCompat.getColor(context, colorId))
+}
+
 /** Trim/Cut/Crop the transparent boarder of a Bitmap */
 fun Bitmap.trimTransparent(): Bitmap {
     val imgHeight = height

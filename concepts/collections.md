@@ -17,6 +17,17 @@
 
 ____
 
+## More Filter with Lambda
+
+```kt
+val averageMobileDuration = log
+    .filter { it.os in setOf(OS.IOS, OS.ANDROID) }
+    .map(SiteVisit::duration)
+    .average()
+```
+
+____
+
 ## Applying a predicate to a collection
 
 ```kt

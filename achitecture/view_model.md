@@ -43,6 +43,8 @@ class MyActivity : AppCompatActivity() {
         model.getUsers().observe(this, Observer<List<User>>{ users ->
             // update UI
         })
+        // or
+        viewModel.items.observe(this, Observer {/*TODO*/})
     }
 }
 ```

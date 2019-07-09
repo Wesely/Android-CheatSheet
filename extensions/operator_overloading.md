@@ -28,8 +28,6 @@ Thus you can use `p * 1.5`
 
 - `start..end` -> `start.rangeTo(end)`
 
-
-
 ## Expression to Function Name
 
 - `a * b` → `times`
