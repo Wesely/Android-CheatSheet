@@ -1,9 +1,5 @@
 # Lambda Expression
 
-Lambdas are normally compiled to anonymous classes. But that means every time you use a lambda expression, an extra class is created; and if the lambda captures some variables, then a new object is created on every invocation.
-
-If you mark a function with the `inline` modifier, the compiler won’t generate a function call when this function is used and instead will replace every call to the function with the actual code implementing the function.
-
 - Lambdas allow you to pass chunks of code as arguments to functions.
 - Kotlin lets you pass lambdas to functions outside of parentheses and refer to a single lambda parameter as it.
 - Code in a lambda can access and modify variables in the function containing the call to the lambda.
@@ -13,6 +9,16 @@ If you mark a function with the `inline` modifier, the compiler won’t generate
 - You can pass lambdas as arguments to methods that take a Java functional interface (an interface with a single abstract method, also known as a SAM interface) as a parameter.
 - Lambdas with receivers are lambdas in which you can directly call methods on a special receiver object.
 - The with standard library function allows you to call multiple methods on the same object without repeating the reference to the object. apply lets you construct and initialize any object using a builder-style API.
+
+## Inline Functions
+
+**Lambdas** are normally compiled to anonymous classes. But that means every time you use a lambda expression, an extra class is created; and if the lambda captures some variables, then a new object is created on every invocation.
+
+If you mark a function with the `inline` modifier, it works like you paste those code to where the `inline` function has been called.
+
+____
+
+## Some Functions in Standard Library
 
 ### With
 
@@ -80,7 +86,7 @@ val numbersTo100 = naturalNumbers.takeWhile { it <= 100 }
 ## Declare
 
 ```kt
-fun twoAndThree(operation: (Int, Int) -> Int) { 
+fun twoAndThree(operation: (Int, Int) -> Int) {
     val result = operation(2, 3)  
     println("The result is $result")
 }
@@ -100,7 +106,7 @@ fun performRequest(
     /*...*/
 }
 >>> val url = "http://kotl.in"
->>> performRequest(url) { code, content -> /*...*/ }   
+>>> performRequest(url) { code, content -> /*...*/ }
 >>> performRequest(url) { code, page -> /*...*/ }
 copy
 ```
@@ -112,7 +118,7 @@ fun String.filter(predicate: (Char) -> Boolean): String {
     val sb = StringBuilder()
     for (index in 0 until length) {
         val element = get(index)
-        if (predicate(element)) sb.append(element)   
+        if (predicate(element)) sb.append(element)
     }
     return sb.toString()
 }
@@ -138,7 +144,7 @@ processTheAnswer(number -> number + 1);
 
 /* Older Java */
 processTheAnswer(
-    new Function1<Integer, Integer>() {       
+    new Function1<Integer, Integer>() {
         @Override
         public Integer invoke(Integer number) {
             System.out.println(number);
@@ -154,12 +160,12 @@ fun <T> Collection<T>.joinToString(
         separator: String = ", ",
         prefix: String = "",
         postfix: String = "",
-        transform: (T) -> String = { it.toString() } 
+        transform: (T) -> String = { it.toString() }
 ): String {
     val result = StringBuilder(prefix)
     for ((index, element) in this.withIndex()) {
         if (index > 0) result.append(separator)
-        result.append(transform(element))      
+        result.append(transform(element))
     }
     result.append(postfix)
     return result.toString()
@@ -170,9 +176,9 @@ fun <T> Collection<T>.joinToString(
 
 - `transform` : parameter name
 - `(T) -> String` : Any type, will return String
-- ` = { it.toString() }` : Default implementation
+- `={ it.toString() }` : Default implementation
 
-______
+____
 
 ## Returning functions from functions
 
@@ -181,12 +187,11 @@ enum class Delivery { STANDARD, EXPEDITED }
 
 class Order(val itemCount: Int)
 
-fun getShippingCostCalculator(delivery: Delivery): (Order) -> Double {    
+fun getShippingCostCalculator(delivery: Delivery): (Order) -> Double {
     if (delivery == Delivery.EXPEDITED) {
-        return { order -> 6 + 2.1 * order.itemCount }      
+        return { order -> 6 + 2.1 * order.itemCount }
     }
-    return { order -> 1.2 * order.itemCount }              
-}
+    return { order -> 1.2 * order.itemCount }
 ```
 
 - input  : `(delivery: Delivery)`
@@ -196,6 +201,6 @@ Usage:
 
 ```powershell
 >>> val calculator = getShippingCostCalculator(Delivery.EXPEDITED)
->>> println("Shipping costs ${calculator(Order(3))}")    
+>>> println("Shipping costs ${calculator(Order(3))}")
 Shipping costs 12.3
 ```
