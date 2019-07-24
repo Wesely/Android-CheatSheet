@@ -1,5 +1,7 @@
 # Retrofit2 with RxJava2
 
+> once `body.string()` is called, it will be set to null so cannot call it twice.
+
 ``` gradle
 // Retrofit itself
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
@@ -68,7 +70,7 @@ class RetrofitHelper {
 ``` Kotlin
 val webService = RetrofitHelper.retrofit.create(RetrofitHelper.WeatherService::class.java)
 val call = webService.getWeather()
-call.enqueue(object : Call<ResponseBody> {
+call.enqueue(object : Callback<ResponseBody> {
     override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
         // TODO!!
     }

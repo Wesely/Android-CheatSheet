@@ -98,6 +98,8 @@ suspend fun workload(n: Int): Int {
 
 ## Back to MainThread
 
+> `java.lang.IllegalArgumentException: You must call this method on the main thread`
+
 ```kt
 GlobalScope.launch {
     withContext(Dispatchers.Main) {

@@ -10,6 +10,23 @@ To use the `RecyclerView` integration library you need to follow a couple of ste
 4. Add your `RecyclerViewPreloader` to your `RecyclerView` as a scroll listener.
 5. Each of these steps is outlined in more detail below.
 
+## Crop Image to Circle
+
+```kt
+Glide.with(context).load(uri).apply(RequestOptions().circleCrop()).into(imageView)
+```
+
+More
+
+```kt
+ Glide.with(context!!)
+    .load(randomImage)
+    .apply(RequestOptions.bitmapTransform(CircleCrop()).error(R.drawable.nyancat_animated))
+    .transition(DrawableTransitionOptions()
+            .crossFade())
+    .into(picture)
+```
+
 ## Override CustomTarget to do something with `Bitmap`
 
 ```kt
