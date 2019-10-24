@@ -95,6 +95,25 @@ suspend fun workload(n: Int): Int {
     return n
 }
 ```
+## Flow
+There are the following basic ways to create a flow:
+
+- `flowOf(…)` functions to create a flow from a fixed set of values.
+- `asFlow()` extension functions on various types to convert them into flows.
+- `flow { … }` builder function to construct arbitrary flows from sequential calls to emit function.
+- `channelFlow { … }` builder function to construct arbitrary flows from potentially concurrent calls to the send function.
+
+A Flow keeps `emit(obj)` and need a collector to receive those objects
+
+### Flow Example
+```
+flow { emitData() }
+    .map { computeOne(it) }
+    .catch { ... } // catches exceptions in emitData and computeOne
+    .map { computeTwo(it) }
+    .collect { process(it) } // throws exceptions from process and computeTwo
+```
+
 
 ## Back to MainThread
 
