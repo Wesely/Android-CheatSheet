@@ -123,3 +123,42 @@ GlobalScope.launch {
     }.invoke()
 }
 ```
+## Example
+
+- Assign the proper context for suspend functions
+
+```kt
+suspend fun runningIoTask(){
+    runBlocking(Dispatcher.IO){
+        // run some diskIO
+    }
+}
+suspend fun runningStrangeTask(){
+    runBlocking(Dispatcher.Unconfined){
+        // run some Strange Task
+    }
+}
+suspend fun runningUITask(){
+    runBlocking(Dispatcher.Main){
+        // run some UI change
+    }
+}
+```
+- Call them in a proper Scope
+
+```kt
+fun runAllTaskTogether(){
+    CoroutineScope(/**(optional)**/ Dispatcher.Any).launch{
+        runningIoTask()
+        runningStrangeTask()
+    }.invokeOnCompletion { throw -> /
+        runningUITask() 
+    }
+
+    //or 
+    viewModelScope.launch{ }.invokeOnCompletion { throw -> }
+
+    //or 
+    GlobalScope.launch {  }.invokeOnCompletion { throw -> }
+}
+```
