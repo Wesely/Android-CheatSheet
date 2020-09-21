@@ -26,6 +26,25 @@ echo 'export PATH="/usr/local/opt/ncurses/bin:$PATH"' >> ~/.zshrc
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
+Alias
+```
+# Git aliases
+alias rb="git pull --rebase"
+alias ck="git checkout"
+alias stash="git stash"
+alias apply="git stash apply"
+
+# Android aliases
+alias gc=".gradlew/clean"
+alias gca="./gradlew clean assembleDebug"
+alias gcb="./gradlew clean build"
+alias cleanbuild="./gradlew clean build"
+alias morning="
+        gc
+        gca
+"
+```
+
 ## Autojump
 `brew install autojump`
 
