@@ -32,3 +32,21 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 And add this line to `~/.zshrc`
 
 `[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh`
+
+## Arcanist
+### Install
+```
+somewhere >> $ git clone https://github.com/phacility/libphutil.git
+somewhere >> $ git clone https://github.com/phacility/arcanist.git
+somewhere >> $ export PATH="$PATH:/Users/username/somewhere/arcanist/bin/"
+```
+Setup preferred editor
+```
+arc set-config editor "vim"
+```
+
+### Configure new project
+```
+$ cd yourproject/
+yourproject/ $ arc install-certificate
+```
