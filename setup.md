@@ -6,14 +6,8 @@
 Create ssh config by 
 
 `$ touch ~/.ssh/config`
+`$ ssh-add ~/.ssh/id_rsa`
 
-Paste these configs (replace `id_rsa` with any filename)
-
-```
-Host *
-  AddKeysToAgent yes
-  UseKeychain yes
-  IdentityFile ~/.ssh/id_rsa
 ```
 
 ## brew
